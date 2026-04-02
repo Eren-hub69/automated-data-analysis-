@@ -123,7 +123,7 @@ def main():
         save_insights(data)
 
 
-print("PROGRAM STARTED")   # 👈 add this
+print("PROGRAM STARTED")   
 
 if __name__ == "__main__":
     main()
