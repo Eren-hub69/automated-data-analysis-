@@ -1,0 +1,5 @@
+Data Insights
+
+Row ID Mean 4900.5
+Postal Code Mean 55273.322402696904
+Sales Mean 230.76905945918367
