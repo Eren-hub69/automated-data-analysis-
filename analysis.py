@@ -119,15 +119,32 @@ def insights(data):
 
 def save_insights(data):
     if not os.path.exists("outputs"):
-     os.makedirs("outputs")
+        os.makedirs("outputs")
 
-
-    with open("outputs/insights.txt","w")as f:
+    with open("outputs/insights.txt", "w") as f:
         f.write("Data Insights\n\n")
-        
 
+  
         for col in data.select_dtypes(include='number').columns:
-            f.write(f"{col} Mean {data[col].mean()}\n")
+            f.write(f"Insights for {col}:\n")
+            f.write(f"Average: {data[col].mean()}\n")
+            f.write(f"Max: {data[col].max()}\n")
+            f.write(f"Min: {data[col].min()}\n\n")
+
+       
+        for col in data.select_dtypes(include='object').columns:
+            f.write(f"Insights for {col}:\n")
+            top = data[col].value_counts().idxmax()
+            f.write(f"Most frequent: {top}\n\n")
+
+   
+        corr = data.corr(numeric_only=True)
+
+        f.write("Strong Relationships:\n")
+        for col in corr.columns:
+            for row in corr.index:
+                if col != row and abs(corr.loc[row, col]) > 0.7:
+                    f.write(f"{row} and {col} are strongly related\n")
 
 def main():
     if len(sys.argv) < 2:
