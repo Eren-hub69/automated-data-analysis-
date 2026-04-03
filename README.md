@@ -96,7 +96,7 @@ After running the project:
 
 ### Bar Chart Example
 
-![Bar Chart](outputs/Region_bar.png)
+![Bar Chart](outputs/Order ID_bar.png)
 
 ### Correlation Heatmap
 
